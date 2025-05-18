@@ -37,11 +37,6 @@ class _StopwatchAppState extends State<StopwatchApp> {
 
   @override
   Widget build(BuildContext ctx) {
-    final btns = {
-      'Start': Colors.green,
-      'Stop': Colors.red,
-      'Reset': Colors.blue,
-    };
     return Scaffold(
       appBar: AppBar(title: Text('Stopwatch')),
       body: Center(
@@ -55,21 +50,27 @@ class _StopwatchAppState extends State<StopwatchApp> {
             SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:
-                  btns.entries
-                      .map(
-                        (e) => Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: ElevatedButton(
-                            onPressed: () => _act(e.key),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: e.value,
-                            ),
-                            child: Text(e.key),
-                          ),
-                        ),
-                      )
-                      .toList(),
+              children: [
+                ElevatedButton(
+                  onPressed: () => _act('Start'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  child: Text('Start'),
+                ),
+                SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () => _act('Stop'),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: Text('Stop'),
+                ),
+                SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () => _act('Reset'),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                  child: Text('Reset'),
+                ),
+              ],
             ),
           ],
         ),
